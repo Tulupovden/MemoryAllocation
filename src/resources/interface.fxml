@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="1184.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <Tab closable="false" text="Динамически не перемещаемые разделы">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Button fx:id="win1_run_button" layoutX="20.0" layoutY="293.0" mnemonicParsing="false" onAction="#runButton1Click" prefHeight="26.0" prefWidth="370.0" text="Выполнить" />
+            <GridPane layoutX="20.0" layoutY="39.0" prefHeight="64.0" prefWidth="370.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="280.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="76.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <Spinner fx:id="win1_quality_device" editable="true" focusTraversable="false" minHeight="25.0" GridPane.columnIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Label text="Количество устройств:" />
+                    <Label text="Общий объем памяти:" GridPane.rowIndex="1" />
+                    <Spinner fx:id="win1_volume_storage" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                </children>
+            </GridPane>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="14.0" prefHeight="18.0" prefWidth="370.0" text="Характеристики системы:" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" />
+            <Label alignment="CENTER" layoutX="15.0" layoutY="134.0" prefHeight="18.0" prefWidth="370.0" text="Характеристики заданий:" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" />
+            <GridPane layoutX="20.0" layoutY="152.0" prefHeight="122.0" prefWidth="370.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="280.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="76.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <Spinner fx:id="win1_quality_tests" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win1_max_process" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win1_maxTime" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win1_max_volume_process" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Label text="Количество заданий:" />
+                    <Label text="Макс. количество процессов в задании:" GridPane.rowIndex="1" />
+                    <Label text="Макс. продолжительность процесса:" GridPane.rowIndex="2" />
+                    <Label text="Макс. размер памяти процесса:" GridPane.rowIndex="3" />
+                </children>
+            </GridPane>
+            <Accordion fx:id="accord1" layoutX="403.0" layoutY="46.0" prefHeight="479.0" prefWidth="615.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                <panes>
+                    <TitledPane fx:id="tt1" text="Таблица">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="613.0">
+                            <TableView fx:id="table1" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <placeholder>
+                                    <Label text="Нет данных в таблице" />
+                                </placeholder>
+                                <columns>
+                                    <TableColumn fx:id="tab1_id" prefWidth="37.0" text="id" />
+                                    <TableColumn fx:id="tab1_kp" prefWidth="76.20000839233398" text="Макс. КП" />
+                                    <TableColumn fx:id="tab1_prod" prefWidth="100.0" text="Макс. прод." />
+                                    <TableColumn fx:id="tab1_kz" prefWidth="30.0" text="КЗ" />
+                                    <TableColumn fx:id="tab1_ky" prefWidth="75.0" text="Макс. КУ" />
+                                    <TableColumn fx:id="tab1_ob" prefWidth="110.0" text="Общ. об. пам." />
+                                    <TableColumn fx:id="tab1_max_raz" prefWidth="130.0" text="Макс. разм. пам." />
+                                    <TableColumn fx:id="tab1_sumTime" prefWidth="105.0" text="Сумм. время" />
+                                    <TableColumn fx:id="tab1_srTime" prefWidth="100.0" text="Ср. время" />
+                                </columns>
+                            </TableView>
+                        </AnchorPane>
+                    </TitledPane>
+                    <TitledPane text="График">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <LineChart fx:id="chart1" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <xAxis>
+                                            <NumberAxis side="BOTTOM" />
+                                        </xAxis>
+                                        <yAxis>
+                                            <NumberAxis side="LEFT" />
+                                        </yAxis>
+                                    </LineChart>
+                                    <HBox alignment="CENTER_LEFT" layoutX="18.6" layoutY="350.0" prefHeight="21.0" prefWidth="661.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="10.0">
+                                        <children>
+                                            <Label contentDisplay="CENTER" text="Ось Х:" />
+                                            <ChoiceBox prefWidth="100.0" fx:id="x1">
+                                                <HBox.margin>
+                                                    <Insets left="40.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                            <Label text="Ось Y:">
+                                                <HBox.margin>
+                                                    <Insets left="25.0" />
+                                                </HBox.margin>
+                                            </Label>
+                                            <ChoiceBox fx:id="y1" prefWidth="100.0">
+                                                <HBox.margin>
+                                                    <Insets left="4.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                            <Label text="Аргумент:">
+                                                <HBox.margin>
+                                                    <Insets left="25.0" />
+                                                </HBox.margin>
+                                            </Label>
+                                            <ChoiceBox fx:id="arg1" prefWidth="100.0">
+                                                <HBox.margin>
+                                                    <Insets left="4.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </TitledPane>
+                    <TitledPane prefHeight="428.0" prefWidth="605.0" text="Журнал">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <TextArea fx:id="jurText1" editable="false" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </TitledPane>
+                </panes>
+            </Accordion>
+            <Button layoutX="339.0" layoutY="463.0" mnemonicParsing="false" onAction="#clickClear1" text="Очистить" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="310.0" />
+            <CheckBox fx:id="rr1" layoutX="10.0" layoutY="330.0" mnemonicParsing="false" prefWidth="370.0" text="Ручной режим" AnchorPane.leftAnchor="10.0" />
+
+        </AnchorPane>
+    </Tab>
+    <Tab closable="false" text="Динамически перемещаемые разделы">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Button fx:id="win2_run_button" layoutX="20.0" layoutY="325.0" mnemonicParsing="false" onAction="#runButton2Click" prefHeight="26.0" prefWidth="370.0" text="Выполнить" />
+            <GridPane layoutX="20.0" layoutY="39.0" prefHeight="96.0" prefWidth="370.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="280.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="76.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <Spinner fx:id="win2_quality_device" editable="true" focusTraversable="false" minHeight="25.0" GridPane.columnIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Label text="Количество устройств:" />
+                    <Label text="Общий объем памяти:" GridPane.rowIndex="1" />
+                    <Spinner fx:id="win2_volume_storage" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win2_load_cpu" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Label text="Затраты ЦП на перемещение раздела:" GridPane.rowIndex="2" />
+                </children>
+            </GridPane>
+            <Label alignment="CENTER" layoutX="105.0" layoutY="14.0" prefHeight="18.0" prefWidth="370.0" text="Характеристики системы:" AnchorPane.leftAnchor="10.0" />
+            <Label alignment="CENTER" layoutX="4.0" layoutY="166.0" prefHeight="18.0" prefWidth="370.0" text="Характеристики заданий:" AnchorPane.leftAnchor="10.0" />
+            <GridPane layoutX="20.0" layoutY="184.0" prefHeight="122.0" prefWidth="370.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="280.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="76.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <Spinner fx:id="win2_quality_tests" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win2_max_process" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win2_maxTime" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win2_max_volume_process" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Label text="Количество заданий:" />
+                    <Label text="Макс. количество процессов в задании:" GridPane.rowIndex="1" />
+                    <Label text="Макс. продолжительность процесса:" GridPane.rowIndex="2" />
+                    <Label text="Макс. размер памяти процесса:" GridPane.rowIndex="3" />
+                </children>
+            </GridPane>
+            <Accordion fx:id="accord2" layoutX="403.0" layoutY="46.0" prefHeight="479.0" prefWidth="615.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                <panes>
+                    <TitledPane fx:id="tt2" text="Таблица">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="613.0">
+                            <TableView fx:id="table2" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <placeholder>
+                                    <Label text="Нет данных в таблице" />
+                                </placeholder>
+                                <columns>
+                                    <TableColumn fx:id="tab2_id" prefWidth="37.0" text="id" />
+                                    <TableColumn fx:id="tab2_kp" prefWidth="76.20000839233398" text="Макс. КП" />
+                                    <TableColumn fx:id="tab2_prod" prefWidth="100.0" text="Макс. прод." />
+                                    <TableColumn fx:id="tab2_kz" prefWidth="30.0" text="КЗ" />
+                                    <TableColumn fx:id="tab2_ky" prefWidth="75.0" text="Макс. КУ" />
+                                    <TableColumn fx:id="tab2_ob" prefWidth="110.0" text="Общ. об. пам." />
+                                    <TableColumn fx:id="tab2_CP" prefWidth="100.0" text="Затраты ЦП" />
+                                    <TableColumn fx:id="tab2_max_raz" prefWidth="130.0" text="Макс. разм. пам." />
+                                    <TableColumn fx:id="tab2_sumTime" prefWidth="105.0" text="Сумм. время" />
+                                    <TableColumn fx:id="tab2_srTime" prefWidth="100.0" text="Ср. время" />
+                                </columns>
+                            </TableView>
+                        </AnchorPane>
+                    </TitledPane>
+                    <TitledPane text="График">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <LineChart fx:id="chart2" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <xAxis>
+                                            <NumberAxis side="BOTTOM" />
+                                        </xAxis>
+                                        <yAxis>
+                                            <NumberAxis side="LEFT" />
+                                        </yAxis>
+                                    </LineChart>
+                                    <HBox alignment="CENTER_LEFT" layoutX="18.6" layoutY="350.0" prefHeight="21.0" prefWidth="661.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="10.0">
+                                        <children>
+                                            <Label contentDisplay="CENTER" text="Ось Х:" />
+                                            <ChoiceBox prefWidth="100.0" fx:id="x2">
+                                                <HBox.margin>
+                                                    <Insets left="40.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                            <Label text="Ось Y:">
+                                                <HBox.margin>
+                                                    <Insets left="25.0" />
+                                                </HBox.margin>
+                                            </Label>
+                                            <ChoiceBox fx:id="y2" prefWidth="100.0">
+                                                <HBox.margin>
+                                                    <Insets left="4.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                            <Label text="Аргумент:">
+                                                <HBox.margin>
+                                                    <Insets left="25.0" />
+                                                </HBox.margin>
+                                            </Label>
+                                            <ChoiceBox fx:id="arg2" prefWidth="100.0">
+                                                <HBox.margin>
+                                                    <Insets left="4.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </TitledPane>
+                    <TitledPane prefHeight="428.0" prefWidth="605.0" text="Журнал">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <TextArea fx:id="jurText2" editable="false" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </TitledPane>
+                </panes>
+            </Accordion>
+            <Button layoutX="339.0" layoutY="463.0" mnemonicParsing="false" onAction="#clickClear2" text="Очистить" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="310.0" />
+            <CheckBox fx:id="rr2" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" prefWidth="370.0" text="Ручной режим" AnchorPane.leftAnchor="10.0" />
+        </AnchorPane>
+    </Tab>
+    <Tab text="Статические разделы">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Button fx:id="win3_run_button" layoutX="20.0" layoutY="380.0" mnemonicParsing="false" onAction="#runButton3Click" prefHeight="26.0" prefWidth="370.0" text="Выполнить" />
+            <GridPane layoutX="20.0" layoutY="39.0" prefHeight="64.0" prefWidth="370.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="280.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="76.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <Spinner fx:id="win3_quality_device" editable="true" focusTraversable="false" minHeight="25.0" GridPane.columnIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Label text="Количество устройств:" />
+                    <Label text="Количество разделов:" GridPane.rowIndex="1" />
+                    <Spinner fx:id="win3_number_sections" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                </children>
+            </GridPane>
+            <Label alignment="CENTER" layoutX="105.0" layoutY="14.0" prefHeight="18.0" prefWidth="370.0" text="Характеристики системы:" AnchorPane.leftAnchor="10.0" />
+            <Label alignment="CENTER" layoutX="105.0" layoutY="221.0" prefWidth="370.0" text="Характеристики заданий:" AnchorPane.leftAnchor="10.0" />
+            <GridPane layoutX="20.0" layoutY="239.0" prefHeight="122.0" prefWidth="370.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="280.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="76.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <Spinner fx:id="win3_quality_tests" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win3_max_process" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win3_maxTime" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win3_max_volume_process" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Label text="Количество заданий:" />
+                    <Label text="Макс. количество процессов в задании:" GridPane.rowIndex="1" />
+                    <Label text="Макс. продолжительность процесса:" GridPane.rowIndex="2" />
+                    <Label text="Макс. размер памяти процесса:" GridPane.rowIndex="3" />
+                </children>
+            </GridPane>
+            <GridPane layoutX="20.0" layoutY="141.0" prefHeight="64.0" prefWidth="370.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="20.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.99999237060547" minWidth="0.0" prefWidth="75.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="0.0" prefWidth="23.400007629394537" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="75.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="20.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="75.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="20.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="75.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <Label text="1." textAlignment="RIGHT" />
+                    <Label prefHeight="18.0" prefWidth="45.0" text="2." textAlignment="RIGHT" GridPane.columnIndex="2" />
+                    <Label prefHeight="18.0" prefWidth="43.0" text="3." textAlignment="RIGHT" GridPane.columnIndex="4" />
+                    <Label prefHeight="18.0" prefWidth="42.0" text="4." textAlignment="RIGHT" GridPane.columnIndex="6" />
+                    <Label prefHeight="18.0" prefWidth="109.0" text="5." textAlignment="RIGHT" GridPane.rowIndex="1" />
+                    <Label prefHeight="18.0" prefWidth="86.0" text="6." textAlignment="RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <Label prefHeight="18.0" prefWidth="62.0" text="7." textAlignment="RIGHT" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                    <Label prefHeight="18.0" prefWidth="63.0" text="8." textAlignment="RIGHT" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                    <Spinner fx:id="tabSpin1" editable="true" minHeight="25.0" GridPane.columnIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" right="7.0" top="4.0" />
+                        </GridPane.margin>
+                    </Spinner>
+                    <Spinner fx:id="tabSpin2" editable="true" minHeight="25.0" GridPane.columnIndex="3">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" right="7.0" top="4.0" />
+                        </GridPane.margin>
+                    </Spinner>
+                    <Spinner fx:id="tabSpin3" editable="true" minHeight="25.0" GridPane.columnIndex="5">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" right="7.0" top="4.0" />
+                        </GridPane.margin>
+                    </Spinner>
+                    <Spinner fx:id="tabSpin4" editable="true" minHeight="25.0" GridPane.columnIndex="7">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" right="7.0" top="4.0" />
+                        </GridPane.margin>
+                    </Spinner>
+                    <Spinner fx:id="tabSpin5" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" right="7.0" top="4.0" />
+                        </GridPane.margin>
+                    </Spinner>
+                    <Spinner fx:id="tabSpin6" editable="true" minHeight="25.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" right="7.0" top="4.0" />
+                        </GridPane.margin>
+                    </Spinner>
+                    <Spinner fx:id="tabSpin7" editable="true" minHeight="25.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" right="7.0" top="4.0" />
+                        </GridPane.margin>
+                    </Spinner>
+                    <Spinner fx:id="tabSpin8" editable="true" minHeight="25.0" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" right="7.0" top="4.0" />
+                        </GridPane.margin>
+                    </Spinner>
+                </children>
+            </GridPane>
+            <Accordion fx:id="accord3" layoutX="403.0" layoutY="46.0" prefHeight="479.0" prefWidth="615.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                <panes>
+                    <TitledPane fx:id="tt3" text="Таблица">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="613.0">
+                            <TableView fx:id="table3" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <placeholder>
+                                    <Label text="Нет данных в таблице" />
+                                </placeholder>
+                                <columns>
+                                    <TableColumn fx:id="tab3_id" prefWidth="37.0" text="id" />
+                                    <TableColumn fx:id="tab3_kp" prefWidth="76.20000839233398" text="Макс. КП" />
+                                    <TableColumn fx:id="tab3_prod" prefWidth="100.0" text="Макс. прод." />
+                                    <TableColumn fx:id="tab3_kz" prefWidth="30.0" text="КЗ" />
+                                    <TableColumn fx:id="tab3_ky" prefWidth="75.0" text="Макс. КУ" />
+                                    <TableColumn fx:id="tab3_kr" prefWidth="35.0" text="КР" />
+                                    <TableColumn fx:id="tab3_max_raz" prefWidth="130.0" text="Макс. разм. пам." />
+                                    <TableColumn fx:id="tab3_sumTime" prefWidth="105.0" text="Сумм. время" />
+                                    <TableColumn fx:id="tab3_srTime" prefWidth="100.0" text="Ср. время" />
+                                </columns>
+                            </TableView>
+                        </AnchorPane>
+                    </TitledPane>
+                    <TitledPane text="График">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <LineChart fx:id="chart3" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <xAxis>
+                                            <NumberAxis side="BOTTOM" />
+                                        </xAxis>
+                                        <yAxis>
+                                            <NumberAxis side="LEFT" />
+                                        </yAxis>
+                                    </LineChart>
+                                    <HBox alignment="CENTER_LEFT" layoutX="18.6" layoutY="350.0" prefHeight="21.0" prefWidth="661.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="10.0">
+                                        <children>
+                                            <Label contentDisplay="CENTER" text="Ось Х:" />
+                                            <ChoiceBox prefWidth="100.0" fx:id="x3">
+                                                <HBox.margin>
+                                                    <Insets left="40.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                            <Label text="Ось Y:">
+                                                <HBox.margin>
+                                                    <Insets left="25.0" />
+                                                </HBox.margin>
+                                            </Label>
+                                            <ChoiceBox fx:id="y3" prefWidth="100.0">
+                                                <HBox.margin>
+                                                    <Insets left="4.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                            <Label text="Аргумент:">
+                                                <HBox.margin>
+                                                    <Insets left="25.0" />
+                                                </HBox.margin>
+                                            </Label>
+                                            <ChoiceBox fx:id="arg3" prefWidth="100.0">
+                                                <HBox.margin>
+                                                    <Insets left="4.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </TitledPane>
+                    <TitledPane prefHeight="428.0" prefWidth="605.0" text="Журнал">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <TextArea fx:id="jurText3" editable="false" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </TitledPane>
+                </panes>
+            </Accordion>
+            <Button layoutX="339.0" layoutY="463.0" mnemonicParsing="false" onAction="#clickClear3" text="Очистить" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="310.0" />
+
+            <Label alignment="CENTER" layoutX="122.0" layoutY="116.0" prefWidth="370.0" text="Размеры разделов:" AnchorPane.leftAnchor="10.0" />
+            <CheckBox fx:id="rr3" layoutX="10.0" layoutY="415.0" mnemonicParsing="false" prefWidth="370.0" text="Ручной режим" AnchorPane.leftAnchor="10.0" />
+
+        </AnchorPane>
+    </Tab>
+    <Tab text="Сегментное">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Button fx:id="win4_run_button" layoutX="20.0" layoutY="357.0" mnemonicParsing="false" onAction="#runButton4Click" prefHeight="26.0" prefWidth="370.0" text="Выполнить" />
+            <GridPane layoutX="20.0" layoutY="39.0" prefHeight="128.0" prefWidth="370.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="280.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="76.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <Spinner fx:id="win4_quality_device" editable="true" focusTraversable="false" minHeight="25.0" GridPane.columnIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Label text="Количество устройств:" />
+                    <Label text="Общий объем памяти:" GridPane.rowIndex="1" />
+                    <Spinner fx:id="win4_volume_storage" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win4_load_cpu" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Label text="Затраты ЦП на перемещение сегмента:" GridPane.rowIndex="2" />
+                    <Label text="Затраты МД на перемещение сегмента:" GridPane.rowIndex="3" />
+                    <Spinner fx:id="win4_load_md" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                </children>
+            </GridPane>
+            <Label alignment="CENTER" layoutX="105.0" layoutY="14.0" prefHeight="18.0" prefWidth="370.0" text="Характеристики системы:" AnchorPane.leftAnchor="10.0" />
+            <Label alignment="CENTER" layoutX="105.0" layoutY="198.0" prefWidth="370.0" text="Характеристики заданий:" AnchorPane.leftAnchor="10.0" />
+            <GridPane layoutX="20.0" layoutY="216.0" prefHeight="122.0" prefWidth="370.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="280.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="76.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <Spinner fx:id="win4_quality_tests" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win4_max_process" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win4_maxTime" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win4_max_volume_process" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Label text="Количество заданий:" />
+                    <Label text="Макс. количество процессов в задании:" GridPane.rowIndex="1" />
+                    <Label text="Макс. продолжительность процесса:" GridPane.rowIndex="2" />
+                    <Label text="Макс. размер памяти процесса:" GridPane.rowIndex="3" />
+                </children>
+            </GridPane>
+            <Accordion fx:id="accord4" layoutX="403.0" layoutY="46.0" prefHeight="479.0" prefWidth="615.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                <panes>
+                    <TitledPane fx:id="tt4" text="Таблица">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="613.0">
+                            <TableView fx:id="table4" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <placeholder>
+                                    <Label text="Нет данных в таблице" />
+                                </placeholder>
+                                <columns>
+                                    <TableColumn fx:id="tab4_id" prefWidth="37.0" text="id" />
+                                    <TableColumn fx:id="tab4_kp" prefWidth="76.20000839233398" text="Макс. КП" />
+                                    <TableColumn fx:id="tab4_prod" prefWidth="100.0" text="Макс. прод." />
+                                    <TableColumn fx:id="tab4_kz" prefWidth="30.0" text="КЗ" />
+                                    <TableColumn fx:id="tab4_ky" prefWidth="75.0" text="Макс. КУ" />
+                                    <TableColumn fx:id="tab4_ob" prefWidth="110.0" text="Общ. об. пам." />
+                                    <TableColumn fx:id="tab4_cp" prefWidth="100.0" text="Затраты ЦП" />
+                                    <TableColumn fx:id="tab4_md" prefWidth="100.0" text="Затраты МД" />
+                                    <TableColumn fx:id="tab4_max_raz" prefWidth="130.0" text="Макс. разм. пам." />
+                                    <TableColumn fx:id="tab4_sumTime" prefWidth="105.0" text="Сумм. время" />
+                                    <TableColumn fx:id="tab4_srTime" prefWidth="100.0" text="Ср. время" />
+                                </columns>
+                            </TableView>
+                        </AnchorPane>
+                    </TitledPane>
+                    <TitledPane text="График">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <LineChart fx:id="chart4" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <xAxis>
+                                            <NumberAxis side="BOTTOM" />
+                                        </xAxis>
+                                        <yAxis>
+                                            <NumberAxis side="LEFT" />
+                                        </yAxis>
+                                    </LineChart>
+                                    <HBox alignment="CENTER_LEFT" layoutX="18.6" layoutY="350.0" prefHeight="21.0" prefWidth="661.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="10.0">
+                                        <children>
+                                            <Label contentDisplay="CENTER" text="Ось Х:" />
+                                            <ChoiceBox prefWidth="100.0" fx:id="x4">
+                                                <HBox.margin>
+                                                    <Insets left="40.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                            <Label text="Ось Y:">
+                                                <HBox.margin>
+                                                    <Insets left="25.0" />
+                                                </HBox.margin>
+                                            </Label>
+                                            <ChoiceBox fx:id="y4" prefWidth="100.0">
+                                                <HBox.margin>
+                                                    <Insets left="4.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                            <Label text="Аргумент:">
+                                                <HBox.margin>
+                                                    <Insets left="25.0" />
+                                                </HBox.margin>
+                                            </Label>
+                                            <ChoiceBox fx:id="arg4" prefWidth="100.0">
+                                                <HBox.margin>
+                                                    <Insets left="4.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </TitledPane>
+                    <TitledPane prefHeight="428.0" prefWidth="605.0" text="Журнал">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <TextArea fx:id="jurText4" editable="false" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        </AnchorPane>
+                    </TitledPane>
+                </panes>
+            </Accordion>
+            <Button layoutX="339.0" layoutY="463.0" mnemonicParsing="false" onAction="#clickClear4" text="Очистить" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="310.0" />
+            <CheckBox fx:id="rr4" layoutX="10.0" layoutY="390.0" mnemonicParsing="false" prefWidth="370.0" text="Ручной режим" AnchorPane.leftAnchor="10.0" />
+        </AnchorPane>
+    </Tab>
+    <Tab text="Страничное">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Button fx:id="win5_run_button" layoutX="20.0" layoutY="367.0" mnemonicParsing="false" onAction="#runButton5Click" prefHeight="26.0" prefWidth="370.0" text="Выполнить" />
+            <GridPane layoutX="20.0" layoutY="39.0" prefHeight="128.0" prefWidth="370.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="280.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="76.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <Spinner fx:id="win5_quality_device" editable="true" focusTraversable="false" minHeight="25.0" GridPane.columnIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Label text="Количество устройств:" />
+                    <Label text="Общий объем памяти:" GridPane.rowIndex="1" />
+                    <Spinner fx:id="win5_volume_storage" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win5_load_cpu" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Label text="Затраты ЦП на перемещение страницы:" GridPane.rowIndex="2" />
+                    <Label text="Затраты МД на перемещение страницы:" GridPane.rowIndex="3" />
+                    <Spinner fx:id="win5_load_md" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                </children>
+            </GridPane>
+            <Label alignment="CENTER" layoutX="105.0" layoutY="14.0" prefHeight="18.0" prefWidth="370.0" text="Характеристики системы:" AnchorPane.leftAnchor="10.0" />
+            <Label alignment="CENTER" layoutX="105.0" layoutY="208.0" prefWidth="370.0" text="Характеристики заданий:" AnchorPane.leftAnchor="10.0" />
+            <GridPane layoutX="20.0" layoutY="226.0" prefHeight="122.0" prefWidth="370.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="280.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="76.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <Spinner fx:id="win5_quality_tests" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win5_max_process" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win5_maxTime" disable="true" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Spinner fx:id="win5_max_volume_process" editable="true" minHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <GridPane.margin>
+                            <Insets bottom="4.0" top="4.0" />
+                        </GridPane.margin></Spinner>
+                    <Label text="Количество заданий:" />
+                    <Label text="Макс. количество процессов в задании:" GridPane.rowIndex="1" />
+                    <Label text="Макс. продолжительность процесса:" GridPane.rowIndex="2" />
+                    <Label text="Макс. размер памяти процесса:" GridPane.rowIndex="3" />
+                </children>
+            </GridPane>
+            <Accordion fx:id="accord5" layoutX="403.0" layoutY="46.0" prefHeight="479.0" prefWidth="615.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                <panes>
+                    <TitledPane fx:id="tt5" text="Таблица">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="613.0">
+                            <TableView fx:id="table5" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <placeholder>
+                                    <Label text="Нет данных в таблице" />
+                                </placeholder>
+                                <columns>
+                                    <TableColumn fx:id="tab5_id" prefWidth="37.0" text="id" />
+                                    <TableColumn fx:id="tab5_kp" prefWidth="76.20000839233398" text="Макс. КП" />
+                                    <TableColumn fx:id="tab5_prod" prefWidth="100.0" text="Макс. прод." />
+                                    <TableColumn fx:id="tab5_kz" prefWidth="30.0" text="КЗ" />
+                                    <TableColumn fx:id="tab5_ky" prefWidth="75.0" text="Макс. КУ" />
+                                    <TableColumn fx:id="tab5_ob" prefWidth="110.0" text="Общ. об. пам." />
+                                    <TableColumn fx:id="tab5_cp" prefWidth="100.0" text="Затраты ЦП" />
+                                    <TableColumn fx:id="tab5_md" prefWidth="100.0" text="Затраты МД" />
+                                    <TableColumn fx:id="tab5_max_raz" prefWidth="130.0" text="Макс. разм. пам." />
+                                    <TableColumn fx:id="tab5_sumTime" prefWidth="105.0" text="Сумм. время" />
+                                    <TableColumn fx:id="tab5_srTime" prefWidth="100.0" text="Ср. время" />
+                                </columns>
+                            </TableView>
+                        </AnchorPane>
+                    </TitledPane>
+                    <TitledPane text="График">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <LineChart fx:id="chart5" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <xAxis>
+                                            <NumberAxis side="BOTTOM" />
+                                        </xAxis>
+                                        <yAxis>
+                                            <NumberAxis side="LEFT" />
+                                        </yAxis>
+                                    </LineChart>
+                                    <HBox alignment="CENTER_LEFT" layoutX="18.6" layoutY="350.0" prefHeight="21.0" prefWidth="661.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="10.0">
+                                        <children>
+                                            <Label contentDisplay="CENTER" text="Ось Х:" />
+                                            <ChoiceBox prefWidth="100.0" fx:id="x5">
+                                                <HBox.margin>
+                                                    <Insets left="40.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                            <Label text="Ось Y:">
+                                                <HBox.margin>
+                                                    <Insets left="25.0" />
+                                                </HBox.margin>
+                                            </Label>
+                                            <ChoiceBox fx:id="y5" prefWidth="100.0">
+                                                <HBox.margin>
+                                                    <Insets left="4.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                            <Label text="Аргумент:">
+                                                <HBox.margin>
+                                                    <Insets left="25.0" />
+                                                </HBox.margin>
+                                            </Label>
+                                            <ChoiceBox fx:id="arg5" prefWidth="100.0">
+                                                <HBox.margin>
+                                                    <Insets left="4.0" />
+                                                </HBox.margin>
+                                            </ChoiceBox>
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </TitledPane>
+                    <TitledPane prefHeight="428.0" prefWidth="605.0" text="Журнал">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <TextArea fx:id="jurText5" editable="false" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        </AnchorPane>
+                    </TitledPane>
+                </panes>
+            </Accordion>
+            <Button layoutX="339.0" layoutY="463.0" mnemonicParsing="false" onAction="#clickClear5" text="Очистить" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="310.0" />
+
+            <CheckBox fx:id="win5_dynamic_checkbox" disable="true" layoutX="20.0" layoutY="174.0" mnemonicParsing="false" text="Вывести динамику смены страниц" />
+            <CheckBox fx:id="rr5" layoutX="10.0" layoutY="400.0" mnemonicParsing="false" prefWidth="370.0" text="Ручной режим" AnchorPane.leftAnchor="10.0" />
+        </AnchorPane>
+    </Tab>
+</TabPane>
